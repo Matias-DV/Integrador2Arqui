@@ -1,4 +1,4 @@
-package logica;
+package entity;
 
 import jakarta.persistence.*;
 
@@ -42,5 +42,15 @@ public class EstudianteCarrera {
 
     public void setEsGraduado(Boolean esGraduado) {
         this.esGraduado = esGraduado;
+    }
+
+    @Override
+    public String toString() {
+        return "EstudianteCarrera{" +
+                "estudiante=" + estudiante +
+                ", idCarrera=" + idCarrera +
+                ", antiguedad=" + antiguedad +
+                ", esGraduado=" + esGraduado +
+                '}';
     }
 }

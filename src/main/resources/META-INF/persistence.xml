@@ -2,7 +2,9 @@
     <persistence-unit name="Integrador2" transaction-type="RESOURCE_LOCAL">
         <!--  Configuración de conexión JDBC  -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <!-- Aca van las clases de cada identidad que cree -->
+        <!-- Aca van las clases que utilizan el persistence? consultar -->
+        <class> Main </class>
+
         <!--  Configura la conexión a la base de datos  -->
         <properties>
             <!--  JDBC Config  -->

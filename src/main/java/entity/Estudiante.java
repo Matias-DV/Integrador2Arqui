@@ -1,4 +1,4 @@
-package logica;
+package entity;
 
 import jakarta.persistence.*;
 
@@ -94,7 +94,7 @@ public class Estudiante {
     @Override
     public String toString() {
         return "Estudiante{" +
-                ", nombre='" + nombre + '\'' +
+                " nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", edad=" + edad +
                 ", genero='" + genero + '\'' +
