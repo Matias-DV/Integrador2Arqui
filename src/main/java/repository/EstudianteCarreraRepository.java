@@ -14,4 +14,5 @@ public interface EstudianteCarreraRepository {
     void deleteCarrera(Estudiante estudiante, Carrera carrera);
     List<Estudiante>getEstudiantesByCarreraFiltroCiudad(Carrera carrera, String ciudad);
     List<Carrera>getCarrerasInscriptosOrdenadas();
+    List<Carrera>reporteCarreras();
 }

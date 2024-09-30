@@ -1,7 +1,6 @@
 package repository;
 
 import entity.Carrera;
-import entity.Estudiante;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -23,21 +22,27 @@ public class CarreraRepositoryImp implements CarreraRepository {
 
     @Override
     public List<Carrera> getCarreras() {
-        return List.of();
+        List<Carrera> carreras;
+        TypedQuery<Carrera> query = em.createQuery("SELECT c FROM Carrera c ",   Carrera.class);
+        carreras = query.getResultList();
+        return carreras;
     }
 
     @Override
     public void addCarrera(Carrera carrera) {
-
+        em.persist(carrera);
     }
 
     @Override
     public void updateCarrera(Carrera carrera) {
-
+        em.merge(carrera);
     }
 
     @Override
     public void deleteCarrera(Long carrera) {
-
+        Carrera car = em.find(Carrera.class, carrera);
+        if (car != null) {
+            em.remove(car);
+        }
     }
 }

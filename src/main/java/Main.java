@@ -1,12 +1,16 @@
 import entity.Carrera;
 import entity.Estudiante;
+import entity.EstudianteCarrera;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import repository.CarreraRepositoryImp;
 import repository.EstudianteCarreraRepositoryImp;
+import repository.EstudianteRepositoryImp;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,20 +19,21 @@ public class Main {
         EntityTransaction transaction =em.getTransaction();
         em.getTransaction().begin();
 
+        EstudianteCarreraRepositoryImp estudiantecarreraRepository = new EstudianteCarreraRepositoryImp(em);
+        EstudianteRepositoryImp estudianteRepository = new EstudianteRepositoryImp(em);
+        CarreraRepositoryImp carreraRepositoryImp = new CarreraRepositoryImp(em);
 
-        long myLongValue = 1L; // El sufijo 'L' indica que es un literal long
 
-        EstudianteCarreraRepositoryImp ecr = new EstudianteCarreraRepositoryImp(em);
-        Carrera carr = new Carrera(myLongValue, "Ingeniería en Sistemas");
-        System.out.println(carr.toString());
-        ArrayList<Estudiante> estudiantes = (ArrayList<Estudiante>) ecr.getEstudiantesByCarreraFiltroCiudad(carr, "Tandil");
-        for(Estudiante est : estudiantes) {
-            System.out.println(est.toString());
+        List<Estudiante> estudiantes = new ArrayList<>();
+        Carrera c10 = new Carrera( "Química");
+        estudiantes = estudiantecarreraRepository.getEstudiantesByCarreraFiltroCiudad(c10,"Bahía Blanca");
+
+        for (Estudiante est : estudiantes) {
+            System.out.println(est);
         }
+
         transaction.commit();
         em.close();
         emf.close();
-
-
     }
 }

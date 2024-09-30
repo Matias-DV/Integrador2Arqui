@@ -11,4 +11,6 @@ public interface EstudianteRepository {
     void addEstudiante(Estudiante estudiante);
     void updateEstudiante(Estudiante estudiante);
     void deleteEstudiante(Estudiante estudiante);
+    Estudiante getEstudianteByLegajo(int legajo);
+    List<Estudiante>getEstudiantesByGenero(String genero);
 }
